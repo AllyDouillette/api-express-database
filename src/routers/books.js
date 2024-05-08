@@ -27,6 +27,7 @@ router.post('/', async (req, res) => {
   const book = await db.query(`INSERT INTO books (title, type, author, topic, publication_date, pages)
   VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *`, values)
+
   res.status(201).json( { book: book.rows[0] })
 })
 
